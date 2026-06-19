@@ -24,6 +24,4 @@ export default function ThemeManager({ children }) {
     );
 }
 
-export function getThemeSetter() {
-    return useContext(ThemeContext);
-}
+export function getThemeSetter() { return useContext(ThemeContext); }
