@@ -88,7 +88,7 @@ function SignInPage() {
                     <h1 className={styles.title}>Welcome Back!</h1>
                 </div>
 
-                <p>Login to your G-Connect account</p>
+                <p>Login to your G-Buddies account</p>
             </div>
 
             <div className={`${styles.signinCard} ${is_leaving ? styles.evaporate : styles.condensate}`}>

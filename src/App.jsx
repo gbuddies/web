@@ -97,7 +97,7 @@ export default function App() {
 				}
 			/>
 
-						<Route
+			<Route
 				path="/browse-writers" element={
 					<LoginProtector>
 						<BrowseWriters />

@@ -108,11 +108,11 @@ export default function SignUpPage() {
             <div className={`${styles.headerTexts} ${is_leaving ? styles.evaporate : styles.condensate}`}>
                 <div className="logo">
                     <h1 className={styles.title}>
-                        {show_otp_screen ? "Verify OTP" : "G-Connect"}
+                        {show_otp_screen ? "Verify OTP" : "G-Buddies"}
                     </h1>
                 </div>
 
-                <p>{!show_otp_screen && "Create Your G-Connect Account"}</p>
+                <p>{!show_otp_screen && "Create Your G-Buddies Account"}</p>
             </div>
 
             <div className={`${styles.signupCard} ${is_leaving ? styles.evaporate : styles.condensate}`}>

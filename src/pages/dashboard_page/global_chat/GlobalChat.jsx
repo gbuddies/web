@@ -140,8 +140,6 @@ export default function GlobalChat() {
         };
     }, []);
 
-
-
     /* ---------------- SEND MESSAGE ---------------- */
     const sendMessage = async () => {
         if (!message.trim() && files.length === 0) {
@@ -320,7 +318,6 @@ export default function GlobalChat() {
                     </div>
                 </div>
 
-                {/* CHAT MESSAGES */}
                 <div
                     ref={chatRef}
                     onScroll={() => {

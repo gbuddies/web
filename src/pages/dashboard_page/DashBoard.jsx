@@ -16,7 +16,7 @@ export default function DashBoard(props) {
 
             <div className={styles.mainDiv}>
                 <header>
-                    <h2 style={{ color: "var(--primary)" }}>G-Connect</h2>
+                    <h2 style={{ color: "var(--primary)" }}>G-Buddies</h2>
 
                     <div className={styles.utils}>
                         <button>
@@ -37,9 +37,9 @@ export default function DashBoard(props) {
                 </header>
 
                 <div className={styles.hero}>
-                    <h1
-                    >
+                    <h1>
                         Hello, {user_details?.username}
+                        
                         <i
                             style={{
                                 color: "var(--warning)"
