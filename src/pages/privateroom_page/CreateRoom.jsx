@@ -3,7 +3,7 @@ import ScrollDownBox from "../../reusable_component/scroll_downs/ScrollDownBox";
 import ButtonLoader from "../loading_screen/ButtonLoader";
 import { useContext, useEffect, useState } from "react";
 import axios from "axios";
-import { server_url } from "../../../creds/server_url";
+import { server_url } from '../../configs/server_url';
 import { AppContext } from "../../Contexts";
 
 export default function NewRoom(props) {
@@ -55,7 +55,7 @@ export default function NewRoom(props) {
         if (props.api === "update") form.append("room_id", props.room_data.r_id);
 
         axios.post(
-            `${server_url}/g-chat/rooms/${props.api || "create"}?user_id=${user_details?.id || localStorage.getItem("user_id")}${props.api === "update" ? "&room_id=" + props.room_data.r_id : ""}`,
+            `${server_url}/rooms/${props.api || "create"}?user_id=${user_details?.id || localStorage.getItem("user_id")}${props.api === "update" ? "&room_id=" + props.room_data.r_id : ""}`,
             form,
             {
                 headers: {

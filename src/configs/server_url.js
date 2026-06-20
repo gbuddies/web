@@ -1,0 +1,1 @@
+export const server_url = "http://api.gbuddies.in";

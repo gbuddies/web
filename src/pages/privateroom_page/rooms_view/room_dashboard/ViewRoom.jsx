@@ -7,7 +7,7 @@ import { useLocation, useNavigate, useParams } from "react-router-dom";
 import { useContext, useEffect, useState } from "react";
 import axios from "axios";
 
-import { server_url } from "../../../../../creds/server_url";
+import { server_url } from '../../../../configs/server_url';
 import { AppContext } from "../../../../Contexts";
 import NewRoom from "../../CreateRoom";
 import UserProfile from "../../../user_profile/UserProfile";
@@ -36,7 +36,7 @@ export default function ViewRoom() {
         }
 
         axios.get(
-            server_url + `/g-chat/rooms/is_member?user_id=${user_details?.id || localStorage.getItem("user_id")}&room_id=${room_id}`,
+            server_url + `/rooms/is_member?user_id=${user_details?.id || localStorage.getItem("user_id")}&room_id=${room_id}`,
             {
                 headers: {
                     auth_token: `Bearer ${localStorage.getItem("token")}`
@@ -62,7 +62,7 @@ export default function ViewRoom() {
 
     useEffect(() => {
         axios.get(
-            server_url + `/g-chat/rooms/get-room?user_id=${user_details?.id || localStorage.getItem("user_id")}&room_id=${room_id}`,
+            server_url + `/rooms/get-room?user_id=${user_details?.id || localStorage.getItem("user_id")}&room_id=${room_id}`,
             {
                 headers: {
                     auth_token: `Bearer ${localStorage.getItem("token")}`
@@ -79,7 +79,7 @@ export default function ViewRoom() {
         });
 
         axios.get(
-            server_url + `/g-chat/rooms/members?user_id=${user_details?.id || localStorage.getItem("user_id")}&room_id=${room_id}`,
+            server_url + `/rooms/members?user_id=${user_details?.id || localStorage.getItem("user_id")}&room_id=${room_id}`,
             {
                 headers: {
                     auth_token: `Bearer ${localStorage.getItem("token")}`
@@ -100,7 +100,7 @@ export default function ViewRoom() {
         switch (room_data.join_pref) {
             case "Anyone Can Join":
                 axios.get(
-                    server_url + `/g-chat/rooms/join?room_id=${room_data.r_id}&user_id=${c_user_id}`,
+                    server_url + `/rooms/join?room_id=${room_data.r_id}&user_id=${c_user_id}`,
                     {
                         headers: {
                             auth_token: `Bearer ${localStorage.getItem("token")}`
@@ -121,7 +121,7 @@ export default function ViewRoom() {
 
     const handleLeave = async (e) => {
         await axios.get(
-            server_url + `/g-chat/rooms/leave?room_id=${room_data.r_id}&user_id=${c_user_id}`,
+            server_url + `/rooms/leave?room_id=${room_data.r_id}&user_id=${c_user_id}`,
             {
                 headers: {
                     auth_token: `Bearer ${localStorage.getItem("token")}`

@@ -3,7 +3,7 @@ import styles from './sidebar.module.css'
 
 import { useNavigate } from 'react-router-dom';
 import { AppContext } from '../Contexts';
-import { server_url } from '../../creds/server_url';
+import { server_url } from '../configs/server_url';
 
 export default function SideBar(props) {
     const navigate = useNavigate();

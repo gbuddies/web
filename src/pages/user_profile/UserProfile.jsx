@@ -2,7 +2,7 @@ import { useContext, useEffect, useState } from "react";
 import axios from "axios";
 import createContact from "../direct-messages/CreateContact";
 import styles from "./user_profile.module.css";
-import { server_url } from "../../../creds/server_url";
+import { server_url } from '../../configs/server_url.js';
 import { AppContext } from "../../Contexts";
 import PageLoader from "../loading_screen/PageLoader";
 import { FriendContext } from "../../utils/FriendContexts";
@@ -48,7 +48,7 @@ export default function UserProfile(props) {
 
     useEffect(() => {
         axios.get(
-            server_url + `/g-chat/users/get-user?user_id=${user_details?.id || localStorage.getItem("user_id")}&req_user_id=${user_id}`,
+            server_url + `/users/get-user?user_id=${user_details?.id || localStorage.getItem("user_id")}&req_user_id=${user_id}`,
             {
                 headers: {
                     auth_token: `Bearer ${localStorage.getItem("token")}`

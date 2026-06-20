@@ -2,7 +2,7 @@ import styles from "./room_page.module.css";
 import Rooms from "./Rooms";
 import SideBar from "../../reusable_component/SideBar";
 import NewRoom from "./CreateRoom";
-import { server_url } from "../../../creds/server_url";
+import { server_url } from '../../configs/server_url';
 import { useContext, useEffect, useState } from "react";
 import { UiContext } from "../../utils/UiContext";
 import { AppContext } from "../../Contexts";
@@ -101,7 +101,7 @@ export default function RoomPage() {
 
         try {
             const res = await axios.get(
-                `${server_url}/g-chat/rooms/${room_filter === "my" ? "my-rooms" : "all-rooms"}?user_id=${user_details?.id}&last_seen_id=${last_seen_id}`,
+                `${server_url}/rooms/${room_filter === "my" ? "my-rooms" : "all-rooms"}?user_id=${user_details?.id}&last_seen_id=${last_seen_id}`,
                 {
                     headers: {
                         auth_token: `Bearer ${localStorage.getItem("token")}`
@@ -283,7 +283,7 @@ const capitalize = (string) => string?.charAt(0).toUpperCase() + string?.slice(1
 
 const searchRooms = (query, user_id, search_query, last_seen_id, setLogOut, setLoading, setSearchRes, setSearchLastSeenId) => {
     axios.get(
-        server_url + `/g-chat/rooms/search?user_id=${user_id}&search_query=${search_query}&last_seen_id=${last_seen_id}`,
+        server_url + `/rooms/search?user_id=${user_id}&search_query=${search_query}&last_seen_id=${last_seen_id}`,
         {
             signal: query.signal,
             headers: {

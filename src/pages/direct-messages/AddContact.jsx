@@ -1,6 +1,6 @@
 import { useState } from "react";
 import styles from "./addcontact.module.css";
-import { server_url } from "../../../creds/server_url";
+import { server_url } from '../../configs/server_url';
 import Friend from "../../reusable_component/friend_div/Friend";
 import { useEffect } from "react";
 import DivLoader from "../loading_screen/DivLoader";
@@ -34,7 +34,7 @@ export default function AddContact(props) {
     // To get the recent connections
     useEffect(() => {
         axios.get(
-            `${server_url}/g-chat/users/recent-friends?user_id=${user_details?.id || sessionStorage.getItem("user_id")}`,
+            `${server_url}/users/recent-friends?user_id=${user_details?.id || sessionStorage.getItem("user_id")}`,
             {
                 headers: {
                     auth_token: `Bearer ${localStorage.getItem("token")}`
@@ -57,7 +57,7 @@ export default function AddContact(props) {
         setLoading(true);
 
         axios.get(
-            `${server_url}/g-chat/users/friends?user_id=${user_details?.id || sessionStorage.getItem("user_id")}&last_seen_id=${last_seen_id}`,
+            `${server_url}/users/friends?user_id=${user_details?.id || sessionStorage.getItem("user_id")}&last_seen_id=${last_seen_id}`,
             {
                 headers: {
                     auth_token: `Bearer ${localStorage.getItem("token")}`
@@ -96,7 +96,7 @@ export default function AddContact(props) {
 
         const search = setTimeout(() => {
             axios.get(
-                server_url + `/g-chat/users/search/friends?user_id=${user_details?.id || sessionStorage.getItem("user_id")}&query=${search_query}&last_seen_id=${Number.MAX_SAFE_INTEGER}`,
+                server_url + `/users/search/friends?user_id=${user_details?.id || sessionStorage.getItem("user_id")}&query=${search_query}&last_seen_id=${Number.MAX_SAFE_INTEGER}`,
                 {
                     signal: query.signal,
                     headers: {

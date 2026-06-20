@@ -6,7 +6,7 @@ import MessageBar from '../../../reusable_component/message_bar/MessageBar';
 import SideBar from '../../../reusable_component/SideBar';
 import styles from './globalchat.module.css';
 import { AppContext } from '../../../Contexts';
-import { server_url } from '../../../../creds/server_url';
+import { server_url } from '../../../configs/server_url';
 import { UiContext } from '../../../utils/UiContext';
 import FileObject from '../../../reusable_component/file_object/FileObject';
 import PageLoader from '../../loading_screen/PageLoader';
@@ -103,7 +103,7 @@ export default function GlobalChat() {
         const token = localStorage.getItem("token");
         setLoading(true);
 
-        axios.get(`${server_url}/g-chat/messages/global?offset=${offset}`, {
+        axios.get(`${server_url}/messages/global?offset=${offset}`, {
             headers: {
                 auth_token: `Bearer ${token}`
             }
@@ -186,7 +186,7 @@ export default function GlobalChat() {
 
         try {
             const res = await axios.post(
-                `${server_url}/g-chat/files/upload?user_id=${user_details?.id || localStorage.getItem("user_id")}`,
+                `${server_url}/files/upload?user_id=${user_details?.id || localStorage.getItem("user_id")}`,
                 form,
                 {
                     headers: {

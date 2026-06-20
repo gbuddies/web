@@ -2,7 +2,7 @@ import { useEffect, useState, useContext } from 'react';
 import axios from "axios";
 import SideBar from '../../reusable_component/SideBar';
 import styles from './friendspage.module.css';
-import { server_url } from '../../../creds/server_url';
+import { server_url } from '../../configs/server_url';
 import { AppContext } from '../../Contexts';
 import Friend from '../../reusable_component/friend_div/Friend';
 import PageLoader from '../loading_screen/PageLoader';
@@ -46,7 +46,7 @@ export default function FriendsPage() {
             setHasSearched(true);
 
             const res = await axios.get(
-                `${server_url}/g-chat/users/search?user_id=${user_details?.id || localStorage.getItem("user_id")}&query=${query}&last_seen_id=${Number.MAX_SAFE_INTEGER}`,
+                `${server_url}/users/search?user_id=${user_details?.id || localStorage.getItem("user_id")}&query=${query}&last_seen_id=${Number.MAX_SAFE_INTEGER}`,
                 {
                     headers: {
                         auth_token: `Bearer ${localStorage.getItem("token")}`
@@ -82,7 +82,7 @@ export default function FriendsPage() {
         setDivLoader(true);
 
         axios.get(
-            `${server_url}/g-chat/users/friends?user_id=${user_details?.id || localStorage.getItem("user_id")}`,
+            `${server_url}/users/friends?user_id=${user_details?.id || localStorage.getItem("user_id")}`,
             {
                 headers: {
                     auth_token: `Bearer ${localStorage.getItem("token")}`
@@ -131,7 +131,7 @@ export default function FriendsPage() {
         setReqLoader(true);
 
         axios.get(
-            `${server_url}/g-chat/users/requests/received?user_id=${user_details?.id || localStorage.getItem("user_id")}`,
+            `${server_url}/users/requests/received?user_id=${user_details?.id || localStorage.getItem("user_id")}`,
             {
                 headers: {
                     auth_token: `Bearer ${localStorage.getItem("token")}`
@@ -160,7 +160,7 @@ export default function FriendsPage() {
         // }
         // refresh sent requests (opposite request deleted in backend)
         axios.get(
-            `${server_url}/g-chat/users/requests/sent?user_id=${user_details?.id || localStorage.getItem("user_id")}`,
+            `${server_url}/users/requests/sent?user_id=${user_details?.id || localStorage.getItem("user_id")}`,
             {
                 headers: {
                     auth_token: `Bearer ${localStorage.getItem("token")}`

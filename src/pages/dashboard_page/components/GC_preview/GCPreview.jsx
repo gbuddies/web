@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import { server_url } from "../../../../../creds/server_url";
+import { server_url } from '../../../../configs/server_url';
 import eposhToString from "../../../../reusable_component/util_funcs/EpochToReadable";
 import styles from "./gc_preview.module.css";
 

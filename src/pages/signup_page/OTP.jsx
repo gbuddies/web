@@ -1,7 +1,7 @@
 import { useEffect, useState, useRef, useContext } from "react";
 import styles from "./otpver.module.css";
 import axios from "axios";
-import { server_url } from "../../../creds/server_url";
+import { server_url } from '../../configs/server_url.js';
 import { useNavigate } from "react-router-dom";
 import { AppContext } from "../../Contexts";
 import { code_alert_mapper } from "../page_utils/code_alert_mapper";
@@ -112,7 +112,7 @@ export default function OTP(props) {
 
         try {
             const result = await axios.post(
-                `${server_url}/g-chat/auth/verify-otp?user_id=${localStorage.getItem("user_id")}`,
+                `${server_url}/auth/verify-otp?user_id=${localStorage.getItem("user_id")}`,
                 {
                     email: props.email,
                     otp: final_otp
@@ -142,7 +142,7 @@ export default function OTP(props) {
         setResendLoader(true);
 
         axios.post(
-            `${server_url}/g-chat/auth/send-otp?user_id=${localStorage.getItem("user_id")}`,
+            `${server_url}/auth/send-otp?user_id=${localStorage.getItem("user_id")}`,
             {
                 email: props.email
             },

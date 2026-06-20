@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { server_url } from "../../../../../../creds/server_url";
+import { server_url } from '../../../../../configs/server_url';
 import Toggle from "../../../../../reusable_component/toggle_button/Toggle";
 import styles from "./my_portfolio.module.css";
 import { useNavigate } from "react-router-dom";
@@ -47,7 +47,7 @@ export default function MyPortfolio(props) {
         setLoading(true);
 
         axios.get(
-            server_url + `/g-chat/orders/writer/get?writer_id=${user_details?.id || sessionStorage.getItem("user_id")}`,
+            server_url + `/orders/writer/get?writer_id=${user_details?.id || sessionStorage.getItem("user_id")}`,
             {
                 headers: {
                     auth_token: `Bearer ${localStorage.getItem("token")}`
@@ -71,7 +71,7 @@ export default function MyPortfolio(props) {
         setDetails(prev => ({ available: value, ...prev }));
 
         axios.post(
-            server_url + `/g-chat/orders/writer/available?writer_id=${user_details?.id || sessionStorage.getItem("user_id")}`,
+            server_url + `/orders/writer/available?writer_id=${user_details?.id || sessionStorage.getItem("user_id")}`,
             { available: value },
             {
                 headers: {

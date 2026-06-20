@@ -1,5 +1,5 @@
 import axios from "axios";
-import { server_url } from "../creds/server_url";
+import { server_url } from "./creds/server_url";
 
 export const loadUserDetails = async (setUserDetails, setLoading, setOverride, setLogOut) => {
     if (!sessionStorage.getItem("user_id")) return;
@@ -18,7 +18,7 @@ export const loadUserDetails = async (setUserDetails, setLoading, setOverride, s
         }
 
         const res = await axios.get(
-            `${server_url}/g-chat/users/get-user?user_id=${user_id}&req_user_id=${user_id}`,
+            `${server_url}/users/get-user?user_id=${user_id}&req_user_id=${user_id}`,
             {
                 headers: {
                     auth_token: `Bearer ${token}`
