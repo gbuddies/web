@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import styles from "./browse_writers.module.css";
 import WriterCard from "../../../../../reusable_component/writer_card/WriterCard";
 import axios from "axios";
-import { server_url } from "../../../../../../creds/server_url";
+import { server_url } from '../../../../../configs/server_url';
 import { useContext } from "react";
 import { AppContext } from "../../../../../Contexts";
 import PageLoader from "../../../../loading_screen/PageLoader";
@@ -17,7 +17,7 @@ export default function BrowseWriters() {
         setLoading(true);
 
         axios.get(
-            `${server_url}/g-chat/orders/writer/all?user_id=${user_details?.id || sessionStorage.getItem("user_id")}`,
+            `${server_url}/orders/writer/all?user_id=${user_details?.id || sessionStorage.getItem("user_id")}`,
             {
                 headers: {
                     auth_token: `Bearer ${localStorage.getItem("token")}`

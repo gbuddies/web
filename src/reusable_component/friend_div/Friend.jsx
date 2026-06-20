@@ -1,5 +1,5 @@
 import { useState, useEffect, useContext } from "react";
-import { server_url } from "../../../creds/server_url";
+import { server_url } from '../../configs/server_url.js';
 import createContact from "../../pages/direct-messages/CreateContact";
 import styles from "./friend.module.css";
 import { useRef } from "react";

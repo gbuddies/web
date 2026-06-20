@@ -5,7 +5,7 @@ import { AppContext } from '../../Contexts.jsx';
 import { loadUserDetails } from '../../loadUserDetails.js';
 import { UiContext } from '../../utils/UiContext';
 import Alert from '../../reusable_component/alert_div/Alert.jsx';
-import { server_url } from '../../../creds/server_url';
+import { server_url } from '../../configs/server_url.js';
 import { code_alert_mapper } from '../page_utils/code_alert_mapper.js';
 import OTP from './OTP.jsx';
 
@@ -75,7 +75,7 @@ export default function SignUpPage() {
         setReg(true);
 
         try {
-            const response = await axios.post(`${server_url}/g-chat/auth/signup`, inputs);
+            const response = await axios.post(`${server_url}/auth/signup`, inputs);
 
             if (response.data.success) {
                 sessionStorage.setItem("user_id", response.data.user.id);

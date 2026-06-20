@@ -1,5 +1,4 @@
 
-
 export function checkValidity({ form, setInpErrStatus }){
     let err_in_form = {};
     let isValid = true;

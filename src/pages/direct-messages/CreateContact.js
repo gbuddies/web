@@ -1,12 +1,12 @@
 import axios from "axios";
-import { server_url } from "../../../creds/server_url";
+import { server_url } from '../../configs/server_url';
 
 export default async function createContact(user_id, friend_id, props) {
     // Here friend_id is the id of relation, not of a user.
     
     try {
         const res = await axios.post(
-            `${server_url}/g-chat/messages/create/contact?user_id=${user_id || sessionStorage.getItem("user_id")}&friend_id=${friend_id}`,
+            `${server_url}/messages/create/contact?user_id=${user_id || sessionStorage.getItem("user_id")}&friend_id=${friend_id}`,
             {},
             {
                 headers: {

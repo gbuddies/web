@@ -1,4 +1,4 @@
-import { server_url } from "../../../creds/server_url";
+import { server_url } from '../../configs/server_url.js';
 import styles from "./writer_card.module.css";
 
 export default function WriterCard({ writer }) {

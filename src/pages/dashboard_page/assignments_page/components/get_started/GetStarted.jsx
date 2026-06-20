@@ -1,5 +1,5 @@
 import styles from "./get_started.module.css";
-import { server_url } from "../../../../../../creds/server_url";
+import { server_url } from '../../../../../configs/server_url';
 import axios from "axios";
 import { useContext } from "react";
 import { AppContext } from "../../../../../Contexts";
@@ -34,7 +34,7 @@ export default function WriterPopup(props) {
                 : rem_props.sample_url;
 
             await axios.post(
-                `${server_url}/g-chat/orders/writer/${rem_props.condn === "update" ? "update" : "create"}`,
+                `${server_url}/orders/writer/${rem_props.condn === "update" ? "update" : "create"}`,
                 {
                     writer_id: user_details?.id,
                     sample_url: uploadedFile,
@@ -136,7 +136,7 @@ const uploadFile = async (file, user_details) => {
     formData.append("files", file);
 
     const uploadRes = await axios.post(
-        `${server_url}/g-chat/files/upload?user_id=${user_details?.id || sessionStorage.getItem("user_id")}`,
+        `${server_url}/files/upload?user_id=${user_details?.id || sessionStorage.getItem("user_id")}`,
         formData,
         {
             headers: {

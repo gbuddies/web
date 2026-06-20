@@ -1,4 +1,4 @@
-import { server_url } from "../../../../../creds/server_url";
+import { server_url } from '../../../../configs/server_url';
 import styles from "./view_room.module.css";
 
 export default function RoomMember(props) {

@@ -1,6 +1,6 @@
 import styles from "./dm.module.css";
 import SideBar from "../../reusable_component/SideBar";
-import { server_url } from "../../../creds/server_url";
+import { server_url } from '../../configs/server_url';
 import { AppContext } from "../../Contexts";
 import { DateStamp, Message } from "../../reusable_component/message_dev/Message";
 import { useContext, useRef } from "react";
@@ -90,7 +90,7 @@ export default function DM() {
         setLoading(true);
 
         axios.get(
-            server_url + `/g-chat/messages/contacts?user_id=${user_details?.id || sessionStorage.getItem("user_id")}&last_seen=${last_seen_con}`,
+            server_url + `/messages/contacts?user_id=${user_details?.id || sessionStorage.getItem("user_id")}&last_seen=${last_seen_con}`,
             {
                 headers: {
                     auth_token: `Bearer ${localStorage.getItem("token")}`
@@ -118,7 +118,7 @@ export default function DM() {
         setChatLoader(true);
 
         axios.get(
-            server_url + `/g-chat/messages/chats?user_id=${user_details?.id || sessionStorage.getItem("user_id")}&contact_id=${selected_contactID}&last_seen_id=${Number.MAX_SAFE_INTEGER}`,
+            server_url + `/messages/chats?user_id=${user_details?.id || sessionStorage.getItem("user_id")}&contact_id=${selected_contactID}&last_seen_id=${Number.MAX_SAFE_INTEGER}`,
             {
                 headers: {
                     auth_token: `Bearer ${localStorage.getItem("token")}`
@@ -186,7 +186,7 @@ export default function DM() {
 
         const search = setTimeout(() => {
             axios.get(
-                server_url + `/g-chat/messages/search/contacts?user_id=${user_details?.id || sessionStorage.getItem("user_id")}&query=${search_query}&last_seen_id=${Number.MAX_SAFE_INTEGER}`,
+                server_url + `/messages/search/contacts?user_id=${user_details?.id || sessionStorage.getItem("user_id")}&query=${search_query}&last_seen_id=${Number.MAX_SAFE_INTEGER}`,
                 {
                     signal: query.signal,
                     headers: {
@@ -262,7 +262,7 @@ export default function DM() {
 
         try {
             const res = await axios.post(
-                `${server_url}/g-chat/files/upload?user_id=${user_details?.id || sessionStorage.getItem("user_id")}`,
+                `${server_url}/files/upload?user_id=${user_details?.id || sessionStorage.getItem("user_id")}`,
                 form,
                 {
                     headers: {

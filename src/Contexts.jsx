@@ -3,7 +3,7 @@ import { Navigate } from "react-router-dom";
 import { UiContext } from "./utils/UiContext";
 import { loadUserDetails } from "./loadUserDetails";
 import { io } from "socket.io-client";
-import { server_url } from "../creds/server_url";
+import { server_url } from "./configs/server_url";
 
 export const AppContext = createContext(null);
 

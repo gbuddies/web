@@ -5,7 +5,7 @@ import { useContext, useEffect, useState } from "react";
 import { AppContext } from "../../Contexts";
 import { loadUserDetails } from "../../loadUserDetails.js";
 import axios from "axios";
-import { server_url } from "../../../creds/server_url";
+import { server_url } from '../../configs/server_url.js';
 import { UiContext } from "../../utils/UiContext";
 
 export default function UserSettings() {
@@ -63,7 +63,7 @@ export default function UserSettings() {
             const token = localStorage.getItem("token");
             
             const res = await axios.post(
-                `${server_url}/g-chat/users/save-details?user_id=${user_details?.id || localStorage.getItem("user_id")}`,
+                `${server_url}/users/save-details?user_id=${user_details?.id || localStorage.getItem("user_id")}`,
                 form,
                 {
                     headers: {

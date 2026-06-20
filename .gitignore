@@ -27,4 +27,5 @@ node_modules/
 handlings/
 LocalConstant.jsx
 
+.vscode/
 creds/

@@ -1,9 +1,9 @@
 import SideBar from "../../../reusable_component/SideBar";
 import GetStarted from "./components/get_started/GetStarted";
 import styles from "./landing_page.module.css";
-import writer from "./../../../assets/images/writer.png";
-import history from "./../../../assets/images/history.png";
-import portfolio from "./../../../assets/images/portfolio.png";
+import writer from "./../../../assets/images/writer.webp";
+import history from "./../../../assets/images/history.webp";
+import portfolio from "./../../../assets/images/portfolio.webp";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { useContext } from "react";

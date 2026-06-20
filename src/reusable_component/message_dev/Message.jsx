@@ -1,5 +1,5 @@
 import styles from "./message.module.css";
-import { server_url } from "../../../creds/server_url";
+import { server_url } from '../../configs/server_url.js';
 import { getIcon } from "../file_object/FileObject";
 import { useRef, useState } from "react";
 

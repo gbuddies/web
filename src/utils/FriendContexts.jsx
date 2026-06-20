@@ -1,6 +1,6 @@
 import { createContext, useContext, useState } from "react";
 import axios from "axios";
-import { server_url } from "../../creds/server_url";
+import { server_url } from '../configs/server_url';
 import { AppContext } from '../Contexts';
 
 export const FriendContext = createContext(null);
@@ -14,7 +14,7 @@ export function FriendProvider({ children }) {
     const sendRequest = async (receiver_id, receiver_name, receiver_pfp) => {
         if (!receiver_id) return;
 
-        axios.post(`${server_url}/g-chat/users/requests?action=send&user_id=${user_details?.id || localStorage.getItem("user_id")}`,
+        axios.post(`${server_url}/users/requests?action=send&user_id=${user_details?.id || localStorage.getItem("user_id")}`,
             {
                 senderId: user_details?.id || localStorage.getItem("user_id"),
                 receiverId: receiver_id
@@ -48,7 +48,7 @@ export function FriendProvider({ children }) {
     const acceptRequest = async (requestId) => {
         try {
             await axios.post(
-                `${server_url}/g-chat/users/requests?action=accept&user_id=${user_details?.id || localStorage.getItem("user_id")}`,
+                `${server_url}/users/requests?action=accept&user_id=${user_details?.id || localStorage.getItem("user_id")}`,
                 {
                     requestId: requestId,
                     userId: user_details?.id || Number(localStorage.getItem("user_id"))
@@ -74,7 +74,7 @@ export function FriendProvider({ children }) {
             // }
             // refresh sent requests (opposite request deleted in backend)
             const sentRes = await axios.get(
-                `${server_url}/g-chat/users/requests/sent?user_id=${user_details?.id || localStorage.getItem("user_id")}`,
+                `${server_url}/users/requests/sent?user_id=${user_details?.id || localStorage.getItem("user_id")}`,
                 {
                     headers: {
                         auth_token: `Bearer ${localStorage.getItem("token")}`
@@ -86,7 +86,7 @@ export function FriendProvider({ children }) {
 
             // refresh friends list
             const friendsRes = await axios.get(
-                `${server_url}/g-chat/users/friends?user_id=${user_details?.id || localStorage.getItem("user_id")}`,
+                `${server_url}/users/friends?user_id=${user_details?.id || localStorage.getItem("user_id")}`,
                 {
                     headers: {
                         auth_token: `Bearer ${localStorage.getItem("token")}`
@@ -112,7 +112,7 @@ export function FriendProvider({ children }) {
 
     const rejectRequest = async (requestId) => {
         axios.post(
-            `${server_url}/g-chat/users/requests?action=reject&user_id=${user_details?.id || localStorage.getItem("user_id")}`,
+            `${server_url}/users/requests?action=reject&user_id=${user_details?.id || localStorage.getItem("user_id")}`,
             {
                 requestId: requestId,
                 userId: user_details?.id || localStorage.getItem("user_id")
@@ -140,7 +140,7 @@ export function FriendProvider({ children }) {
 
         try {
             await axios.post(
-                `${server_url}/g-chat/users/friends/remove?user_id=${user_details?.id || localStorage.getItem("user_id")}`,
+                `${server_url}/users/friends/remove?user_id=${user_details?.id || localStorage.getItem("user_id")}`,
                 {
                     userId: user_details?.id || localStorage.getItem("user_id"),
                     friendId

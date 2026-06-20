@@ -1,4 +1,3 @@
-
 // import Logo from '../reusable_elements/Logo'
 import styles from './signin_page.module.css';
 import { checkValidity } from '../page_utils/AuthPageUtils';
@@ -11,7 +10,7 @@ import ButtonLoader from '../loading_screen/ButtonLoader.jsx';
 import axios from 'axios';
 import { Link, useNavigate } from 'react-router-dom';
 import { useContext, useState } from 'react';
-import { server_url } from '../../../creds/server_url';
+import { server_url } from '../../configs/server_url.js';
 
 function SignInPage() {
     const navigate = useNavigate();
@@ -50,7 +49,7 @@ function SignInPage() {
         setSignin(true);
 
         try {
-            const response = await axios.post(`${server_url}/g-chat/auth/signin`, inputs);
+            const response = await axios.post(`${server_url}/auth/signin`, inputs);
 
             if (response.data.success) {
                 sessionStorage.setItem("user_id", response.data.user.id);
